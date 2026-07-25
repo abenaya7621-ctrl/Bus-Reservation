@@ -23,7 +23,7 @@ This project allows users to book bus tickets, view bus details, and manage rese
 - `BookingDAO.java` – Handles database operations related to bookings
 - `DbConnection.java` – Manages the database connection setup
 - `BusDemo.java` – Demo/entry point to run bus-related operations
-- `JDBCDemo.java` – Demo/entry point to test JDBC connectivity
+
 
 ## How to Run
 1. Clone this repository
