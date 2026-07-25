@@ -1,6 +1,5 @@
 package BusResv;
 import java.sql.*;
-
 public class BusDAO {
 	public void displayBusInfo() throws SQLException {
 		String query = "Select * from bus";
@@ -18,14 +17,18 @@ public class BusDAO {
 		}
 		
 		System.out.println("------------------------------------------");
+		con.close();
 	}
 	
-	public int getCapacity(int id) throws SQLException {
-		String query = "Select capacity from bus where id=" + id;
+	public int getCapacity(int busNo) throws SQLException {
+		String query = "Select capacity from bus where bus_no=?";
 		Connection con = DbConnection.getConnection();
-		Statement st = con.createStatement();
-		ResultSet rs = st.executeQuery(query);
+		PreparedStatement pst = con.prepareStatement(query);
+		pst.setInt(1, busNo);
+		ResultSet rs = pst.executeQuery();
 		rs.next();
-		return rs.getInt(1);
+		int capacity = rs.getInt(1);
+		con.close();
+		return capacity;
 	}
 }
